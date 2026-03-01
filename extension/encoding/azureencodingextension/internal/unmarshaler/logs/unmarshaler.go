@@ -106,6 +106,7 @@ func (r ResourceLogsUnmarshaler) UnmarshalLogs(buf []byte) (plog.Logs, error) {
 	case unmarshaler.FormatUnknown:
 		return plog.NewLogs(), nil
 	default:
+		return plog.NewLogs(), fmt.Errorf("unrecognized batch format: %q", batchFormat)
 	}
 
 	l := plog.NewLogs()
